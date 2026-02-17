@@ -3,26 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo Apps - Anime Style</title>
+    <title>Todo Apps · Anime Style</title>
+    <!-- Font Awesome untuk ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: Poppins & Pacifico -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Pacifico&display=swap" rel="stylesheet">
+    <!-- CSS eksternal -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>✨ Todo List ✨</h1>
-        <h2>Tambah yang harus dilakukan</h2>
+    <!-- Elemen dekoratif anime -->
+    <div class="decor decor-1">🌸</div>
+    <div class="decor decor-2">⛩️</div>
+
+    <div class="card">
+        <h1 class="title">Todo List</h1>
+        <div class="subtitle">～ tambah kegiatan mu ～</div>
+
         <form id="todo-form">
             <div class="form-group">
-                <label for="task">Masukkan hal yang akan dilakukan</label>
-                <input type="text" id="task" placeholder="Contoh: Belajar JavaScript" required>
+                <label><i class="fa-solid fa-pencil"></i> Masukkan hal yang akan dilakukan</label>
+                <input type="text" id="task" placeholder="Contoh: belajar javascript" required>
             </div>
             <div class="form-group">
-                <label for="date">Masukkan tanggal/hari/sesi (dd/mm/yyyy)</label>
+                <label><i class="fa-regular fa-calendar"></i> Masukkan tanggal/hari/sesi (dd/mm/yyyy)</label>
                 <input type="date" id="date" required>
-                <small>📅 Pilih tanggal dari kalender</small>
+                <small><i class="fa-regular fa-star"></i> Pilih tanggal dari kalender</small>
             </div>
-            <button type="submit">Submit</button>
+            <button type="submit" class="btn-submit"><i class="fa-regular fa-paper-plane"></i> Submit</button>
         </form>
+
+        <!-- Daftar todo -->
+        <div class="todo-list">
+            <h3><i class="fa-regular fa-list-check"></i> Catatan tugas</h3>
+            <ul id="task-container">
+                <!-- Akan diisi oleh JavaScript -->
+            </ul>
+        </div>
     </div>
+
+    <!-- Elemen notifikasi -->
+    <div id="notification" class="notification">
+        <i class="fa-regular fa-circle-check"></i>
+        <span id="notification-message">Todo berhasil ditambahkan!</span>
+    </div>
+
+    <!-- JavaScript eksternal -->
     <script src="script.js"></script>
 </body>
 </html>
