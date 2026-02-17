@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo Apps - Starter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Todo List</h1>
+        <h2>Tambah yang harus dilakukan</h2>
+        <form id="todo-form">
+            <div class="form-group">
+                <label for="task">Masukkan hal yang akan dilakukan</label>
+                <input type="text" id="task" placeholder="Contoh: Belajar JavaScript" required>
+            </div>
+            <div class="form-group">
+                <label for="date">Masukkan tanggal/hari/sesi</label>
+                <input type="text" id="date" placeholder="mm/dd/yyyy" pattern="\d{2}/\d{2}/\d{4}" title="Format: mm/dd/yyyy" required>
+                <small>Format: mm/dd/yyyy</small>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
