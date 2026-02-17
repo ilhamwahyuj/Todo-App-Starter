@@ -40,14 +40,14 @@
 We have exciting plans for this project! Here is what we are working on (or would love to see contributed):
 
 ### 🛠️ Core Functionality
-- [ ] ** Local Storage Integration** *Keep your tasks even after closing the browser.*
-- [ ] ** Task Edit Mode** *Double-click or click an 'edit' icon to modify existing task descriptions.*
-- [ ] ** Advanced Filtering** *Quickly switch views between `All`, `Active`, and `Completed` tasks.*
+- [ ] **Local Storage Integration** *Keep your tasks even after closing the browser.*
+- [ ] **Task Edit Mode** *Double-click or click an 'edit' icon to modify existing task descriptions.*
+- [ ] **Advanced Filtering** *Quickly switch views between `All`, `Active`, and `Completed` tasks.*
 
 ### 🎨 User Experience (UX)
-- [ ] ** Dark Mode Toggle** *Add a theme switcher for better night-time productivity.*
-- [ ] ** Task Reminders** *Browser notifications for high-priority tasks.*
-- [ ] ** Animations** *Add smooth transitions (Framer Motion or CSS Keyframes) when adding/deleting tasks.*
+- [ ] **Dark Mode Toggle** *Add a theme switcher for better night-time productivity.*
+- [ ] **Task Reminders** *Browser notifications for high-priority tasks.*
+- [ ] **Animations** *Add smooth transitions (Framer Motion or CSS Keyframes) when adding/deleting tasks.*
 
 ---
 
