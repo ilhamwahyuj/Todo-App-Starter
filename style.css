@@ -15,7 +15,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Latar belakang anime (pattern bintang) */
 body::before {
     content: "";
     position: absolute;
@@ -26,7 +25,6 @@ body::before {
     pointer-events: none;
 }
 
-/* Elemen dekoratif: awan/emoji */
 .decor {
     position: absolute;
     font-size: 8rem;
@@ -38,7 +36,6 @@ body::before {
 .decor-1 { top: 10px; left: 10px; transform: rotate(-10deg); }
 .decor-2 { bottom: 10px; right: 10px; transform: rotate(20deg); }
 
-/* Kartu utama */
 .card {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(12px);
@@ -46,13 +43,12 @@ body::before {
     border-radius: 32px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 2px rgba(255, 215, 0, 0.2) inset;
     padding: 30px 35px;
-    width: 500px;
+    width: 550px;
     max-width: 90%;
     z-index: 10;
     border: 1px solid rgba(255, 215, 0, 0.3);
 }
 
-/* Judul utama */
 .title {
     font-family: 'Pacifico', cursive;
     font-size: 3rem;
@@ -76,7 +72,6 @@ body::before {
     padding-bottom: 10px;
 }
 
-/* Label form */
 .form-group {
     margin-bottom: 20px;
 }
@@ -129,7 +124,6 @@ small {
     margin-left: 10px;
 }
 
-/* Tombol submit */
 .btn-submit {
     background: linear-gradient(145deg, #f6b868, #ff9a3c);
     border: none;
@@ -158,9 +152,15 @@ small {
     font-size: 1.5rem;
 }
 
-/* Daftar todo */
+/* Container untuk dua daftar */
+.todo-lists-container {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
 .todo-list {
-    margin-top: 35px;
     background: rgba(10, 5, 20, 0.4);
     border-radius: 30px;
     padding: 20px 15px;
@@ -170,7 +170,7 @@ small {
 
 .todo-list h3 {
     color: #ffdbad;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     margin-bottom: 15px;
     display: flex;
     align-items: center;
@@ -179,9 +179,9 @@ small {
     padding-left: 15px;
 }
 
-#task-container {
+.task-list {
     list-style: none;
-    max-height: 250px;
+    max-height: 200px;
     overflow-y: auto;
     padding-right: 5px;
 }
@@ -189,11 +189,11 @@ small {
 .todo-item {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 40px;
-    padding: 12px 18px;
-    margin-bottom: 10px;
+    padding: 10px 15px;
+    margin-bottom: 8px;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     border: 1px solid rgba(255, 215, 140, 0.5);
     backdrop-filter: blur(2px);
     transition: 0.2s;
@@ -205,16 +205,15 @@ small {
 }
 
 .todo-item input[type="checkbox"] {
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
     accent-color: #ffae42;
-    transform: scale(1.1);
     cursor: pointer;
 }
 
 .todo-item .task-text {
     flex: 1;
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: #f5e6d3;
     word-break: break-word;
 }
@@ -228,7 +227,7 @@ small {
     background: none;
     border: none;
     color: #ff7b7b;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     cursor: pointer;
     transition: 0.2s;
     padding: 0 5px;
@@ -239,7 +238,19 @@ small {
     transform: scale(1.2);
 }
 
-/* Notifikasi (pop-up) */
+.task-list::-webkit-scrollbar {
+    width: 6px;
+}
+.task-list::-webkit-scrollbar-track {
+    background: rgba(255,255,240,0.1);
+    border-radius: 10px;
+}
+.task-list::-webkit-scrollbar-thumb {
+    background: #ffae42;
+    border-radius: 10px;
+}
+
+/* Notifikasi */
 .notification {
     position: fixed;
     top: 20px;
@@ -269,17 +280,4 @@ small {
 .notification i {
     font-size: 1.8rem;
     color: #ffd966;
-}
-
-/* Scrollbar cantik */
-#task-container::-webkit-scrollbar {
-    width: 6px;
-}
-#task-container::-webkit-scrollbar-track {
-    background: rgba(255,255,240,0.1);
-    border-radius: 10px;
-}
-#task-container::-webkit-scrollbar-thumb {
-    background: #ffae42;
-    border-radius: 10px;
 }
