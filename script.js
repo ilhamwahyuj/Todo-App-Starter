@@ -1,12 +1,13 @@
-// Ambil elemen
+// Elemen DOM
 const form = document.getElementById('todo-form');
 const taskInput = document.getElementById('task');
 const dateInput = document.getElementById('date');
-const taskContainer = document.getElementById('task-container');
+const incompleteList = document.getElementById('incomplete-tasks');
+const completeList = document.getElementById('complete-tasks');
 const notification = document.getElementById('notification');
 const notifMessage = document.getElementById('notification-message');
 
-// Fungsi menampilkan notifikasi
+// Tampilkan notifikasi
 function showNotification(message) {
     notifMessage.textContent = message;
     notification.classList.add('show');
@@ -15,75 +16,85 @@ function showNotification(message) {
     }, 2500);
 }
 
-// Fungsi mengubah format tanggal dari yyyy-mm-dd ke dd/mm/yyyy
+// Ubah format yyyy-mm-dd ke dd/mm/yyyy
 function formatDate(isoDate) {
     if (!isoDate) return '';
     const [year, month, day] = isoDate.split('-');
     return `${day}/${month}/${year}`;
 }
 
-// Fungsi menambah todo ke daftar
-function addTodoToDOM(task, date) {
+// Buat elemen todo item
+function createTodoItem(task, date, isCompleted = false) {
     const li = document.createElement('li');
     li.className = 'todo-item';
 
-    // Checkbox
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
-    checkbox.addEventListener('change', function() {
-        span.classList.toggle('checked', checkbox.checked);
-    });
+    checkbox.checked = isCompleted;
 
-    // Span teks
     const span = document.createElement('span');
     span.className = 'task-text';
-    span.textContent = `${task} — ${date}`; // date sudah dd/mm/yyyy
+    if (isCompleted) span.classList.add('checked');
+    span.textContent = `${task} — ${date}`;
 
-    // Tombol hapus
     const deleteBtn = document.createElement('button');
     deleteBtn.className = 'delete-btn';
     deleteBtn.innerHTML = '<i class="fa-regular fa-trash-can"></i>';
-    deleteBtn.addEventListener('click', function() {
+    deleteBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
         li.remove();
         showNotification('Todo dihapus ✨');
+    });
+
+    // Event pindah daftar saat checkbox berubah
+    checkbox.addEventListener('change', function() {
+        if (checkbox.checked) {
+            span.classList.add('checked');
+            completeList.appendChild(li);
+        } else {
+            span.classList.remove('checked');
+            incompleteList.appendChild(li);
+        }
     });
 
     li.appendChild(checkbox);
     li.appendChild(span);
     li.appendChild(deleteBtn);
-    taskContainer.appendChild(li);
+    return li;
 }
 
-// Event submit form
+// Tambah todo ke DOM
+function addTodoToDOM(task, date, isCompleted = false) {
+    const li = createTodoItem(task, date, isCompleted);
+    if (isCompleted) {
+        completeList.appendChild(li);
+    } else {
+        incompleteList.appendChild(li);
+    }
+}
+
+// Submit form
 form.addEventListener('submit', function(e) {
     e.preventDefault();
-
     const task = taskInput.value.trim();
-    const rawDate = dateInput.value; // yyyy-mm-dd
+    const rawDate = dateInput.value;
 
     if (!task || !rawDate) {
         showNotification('Isi task dan tanggal dulu ya!');
         return;
     }
 
-    // Format tanggal ke dd/mm/yyyy
     const formattedDate = formatDate(rawDate);
-
-    // Tambahkan ke daftar
-    addTodoToDOM(task, formattedDate);
-
-    // Tampilkan notifikasi sukses
+    addTodoToDOM(task, formattedDate, false);
     showNotification('Todo berhasil ditambahkan!');
-
-    // Reset form
     form.reset();
-
-    // Opsional: console log
     console.log('Todo baru:', { task, date: formattedDate });
 });
 
-// (Opsional) Muat contoh awal biar tidak kosong
+// Contoh awal sesuai gambar
 (function initExample() {
-    addTodoToDOM('Belajar JavaScript', '17/02/2026');
-    addTodoToDOM('Nonton anime', '18/02/2026');
+    // Yang harus dilakukan
+    addTodoToDOM('Makan di Restoran', formatDate('2021-12-27'), false);
+    // Yang sudah dilakukan (contoh)
+    addTodoToDOM('Belajar JavaScript', formatDate('2026-02-19'), true);
 })();
